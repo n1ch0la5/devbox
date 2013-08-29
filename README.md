@@ -20,7 +20,7 @@ Ubuntu 12.04 32bit, Nginx, PHP5.4, php-fpm, xdebug, composer, MySQL 5.5, Redis, 
 * Clone this repository `git clone https://github.com/Aboalarm/devbox.git`. 
 * Run `vagrant up` inside the newly created directory. (the first time you run Vagrant it will fetch the virtual box image which is ~300mb. So this could take some time)
 * Vagrant will now use Puppet to provision the devbox (this could take a few minutes)
-* Point "devbox" and any other vhosts to `192.168.3.3` in your hosts file of your OS. e.g. `192.168.3.3 devbox myproject.dev myotherproject.dev [ANY-OTHER-HOST]` 
+* Point "devbox" and any other vhosts to `192.168.3.3` in your hosts file of your host OS. e.g. `192.168.3.3 devbox myproject.dev myotherproject.dev [HOSTNAME]` 
 * Now just clone/copy your Laravel projects into `www/[HOSTNAME]` and open http://[HOSTNAME] in your browser. **Done!** 
 
 ## Shared Folders
@@ -49,20 +49,4 @@ Please fork, improve, extend, make pull request, wrap it as a gift. Use the GitH
 
 ## Troubleshoot
 
-* You can't see the website, instead all you see is
-
-  ```
-  It works!
-
-  This is the default web page for this server.
-
-  The web server software is running but no content has been added, yet.
-  ```
-
-  **Solution**
-
-  ```
-  $ vagrant ssh
-  vagrant@devbox:~$ sudo ln -s /etc/nginx/sites-available/laravel.dev /etc/nginx/sites-enabled/aboalarm.dev
-  vagrant@devbox:~$ sudo /etc/init.d/nginx restart
-  ```
+* If you use Windows as host OS, disable NFS since it's not supported: edit `Vagrantfile` and set `nfs => false`
