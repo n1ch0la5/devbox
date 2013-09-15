@@ -17,6 +17,7 @@ Ubuntu 12.04 32bit, Nginx, PHP5.4, php-fpm, xdebug, composer, MySQL 5.5, Redis, 
 
 ## Initial Setup
 
+* Install VirtualBox and Vagrant ( >= 1.3.0)
 * Clone this repository `git clone https://github.com/Aboalarm/devbox.git`. 
 * Run `vagrant up` inside the newly created directory. (the first time you run Vagrant it will fetch the virtual box image which is ~300mb. So this could take some time)
 * Vagrant will now use Puppet to provision the devbox (this could take a few minutes)
@@ -49,4 +50,4 @@ Please fork, improve, extend, make pull request, wrap it as a gift. Use the GitH
 
 ## Troubleshoot
 
-* If you use Windows as host OS, disable NFS since it's not supported: edit `Vagrantfile` and set `nfs => false`
+* If you use Windows as host OS, disable NFS since it's not supported: edit `Vagrantfile` and set `nfs => false`. On OSX NFS gives much better shared folders performance.
