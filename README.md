@@ -48,8 +48,12 @@ For more: Vagrant is [very well documented](http://docs.vagrantup.com/v2/)
 Please fork, improve, extend, make pull request, wrap it as a gift. Use the GitHub Issues!
 
 
-## Ngrok Setup
+## Ngrok 
 
+Ngrok creates a tunnel from the public internet (http://subdomain.ngrok.com) to a website on your local machine. You can give this URL to anyone to allow them to try out a website you're developing without doing any deployment.
+For all the features and documentation, check their site: `http://ngrok.com` and usage guide: `http://ngrok.com/usage`.
+
+### Setup:
 * In `/etc/nginx/sites-available/ngrok.dev` change `root` path (ie. replace `yoursite.dev` with your site directory)
 * Make ngrok configuration active by symlinking it: `sudo ln -s /etc/nginx/sites-available/ngrok.dev /etc/nginx/sites-enabled/ngrok.dev`
 * Restart nginx by doing `sudo /etc/init.d/nginx restart`
