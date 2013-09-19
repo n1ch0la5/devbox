@@ -35,7 +35,6 @@ include sphinx
 include redis
 include git
 include nodejs
-include localtunnel
 include composer
 include beanstalkd
 include ngrok

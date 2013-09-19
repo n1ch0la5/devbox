@@ -5,7 +5,7 @@ devbox is a Vagrant development machine provisioned and preconfigured for workin
 
 
 ## Features / Stack
-Ubuntu 12.04 32bit, Nginx, PHP5.4, php-fpm, xdebug, composer, MySQL 5.5, Redis, Beanstalkd, supervisord, Sphinx, localtunnel, Node.js, MongoDB
+Ubuntu 12.04 32bit, Nginx, PHP5.4, php-fpm, xdebug, composer, MySQL 5.5, Redis, Beanstalkd, supervisord, Sphinx, ngrok, Node.js, MongoDB
 
 
 
@@ -47,6 +47,13 @@ For more: Vagrant is [very well documented](http://docs.vagrantup.com/v2/)
 
 Please fork, improve, extend, make pull request, wrap it as a gift. Use the GitHub Issues!
 
+
+## Ngrok Setup
+
+* In `/etc/nginx/sites-available/ngrok.dev` change `root` path (ie. replace `yoursite.dev` with your site directory)
+* Make ngrok configuration active by symlinking it: `sudo ln -s /etc/nginx/sites-available/ngrok.dev /etc/nginx/sites-enabled/ngrok.dev`
+* Restart nginx by doing `sudo /etc/init.d/nginx restart`
+* Start ngrok service with: `ngrok yoursite.dev:80`
 
 ## Troubleshoot
 
