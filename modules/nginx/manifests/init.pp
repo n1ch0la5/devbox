@@ -64,8 +64,8 @@ class nginx::conf {
   file { 'var/www':
     path => '/var/www',
     ensure => directory,
-    owner => root,
-    group => root,
+    owner => vagrant,
+    group => vagrant,
   }
 
 
