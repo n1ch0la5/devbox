@@ -57,7 +57,7 @@ For all the features and documentation, check their site: `http://ngrok.com` and
 * In `/etc/nginx/sites-available/ngrok.dev` change `root` path (ie. replace `yoursite.dev` with your site directory)
 * Make ngrok configuration active by symlinking it: `sudo ln -s /etc/nginx/sites-available/ngrok.dev /etc/nginx/sites-enabled/ngrok.dev`
 * Restart nginx by doing `sudo /etc/init.d/nginx restart`
-* Start ngrok service with: `ngrok yoursite.dev:80`
+* Start ngrok service with: `ngrok :80`
 
 ## Troubleshoot
 
