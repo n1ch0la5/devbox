@@ -1,0 +1,11 @@
+---
+
+- name: download composer
+  shell: curl -sS https://getcomposer.org/installer|php
+
+- name: mv composer to /usr/local/bin
+  command: composer.phar /usr/local/bin/composer
+
+- name: access attributes for composer
+  file: path=/usr/local/bin/composer
+        group=staff mode=0755

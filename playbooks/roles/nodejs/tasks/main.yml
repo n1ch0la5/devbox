@@ -1,0 +1,7 @@
+---
+
+- name: add nodejs ppa
+  command: /usr/bin/add-apt-repository ppa:chris-lea/node.js
+
+- name: install nodejs from ppa
+  apt: pkg=nodejs update_cache=yes

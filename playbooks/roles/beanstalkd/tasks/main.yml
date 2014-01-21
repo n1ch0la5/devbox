@@ -1,0 +1,15 @@
+---
+
+- name: install beanstalkd
+  apt: pkg=beanstalkd state=latest
+  
+- name: copy /etc/default/beanstalkd to vm
+  copy: src=beanstalkd dest=/etc/default/beanstalkd 
+        owner=root group=root mode=0644 
+
+- name: copy /etc/init/beanstalkd.conf to vm
+  copy: src=beanstalkd.conf dest=/etc/init/beanstalkd.conf 
+        owner=root group=root mode=0644
+  notify:
+    - start beanstalkd
+
