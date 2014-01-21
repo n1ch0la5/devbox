@@ -1,0 +1,6 @@
+---
+
+- name: install avahi-daemon
+  apt: pkg=avahi-daemon state=latest
+  notify:
+    - start avahi-daemon

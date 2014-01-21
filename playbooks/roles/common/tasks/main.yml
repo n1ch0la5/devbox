@@ -1,0 +1,16 @@
+---
+
+- name: update apt cache and dist-upgrade
+  apt: update_cache=yes upgrade=dist
+
+- name: install some tools
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - python-software-properties
+    - curl
+    - imagemagick
+    - build-essential
+    - git
+    - vim
+
+
