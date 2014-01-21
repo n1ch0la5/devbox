@@ -1,0 +1,45 @@
+---
+
+- name: install nginx packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - nginx
+    - nginx-extras
+
+- name: copy nginx.conf to remote
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+        owner=root group=root mode=0644
+
+- name: create dir for nginx certs
+  file: path=/usr/share/nginx/certs
+        owner=root group=root state=directory
+
+- name: copy nginx certs to vm
+  copy: src=certs/{{ item }} dest=/usr/share/nginx/certs/{{ item }}
+        owner=root group=root mode=0644
+  with_items:
+    - server.crt
+    - server.key
+
+- name: copy vhosts conf to vm
+  copy: src=sites/{{ item }} dest=/etc/nginx/sites-available/{{ item }}
+        owner=root group=root mode=0644
+  with_items:
+    - defautl
+    - laravel.dev
+    - laravel.dev.ssl
+
+- name: enable vhosts
+  file: path=/etc/nginx/sites-enabled/{{ item }} state=link
+        owner=root group=root
+  with_items:
+    - defautl
+    - laravel.dev
+    - laravel.dev.ssl
+
+- name: ensure /var/www exists
+  file: path=/var/www state=directory
+        owner=www-data group=www-data mode=0755
+  notify:
+    - start nginx
+
