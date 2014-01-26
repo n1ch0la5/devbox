@@ -38,3 +38,4 @@ include nodejs
 include composer
 include beanstalkd
 include ngrok
+include postgresql
