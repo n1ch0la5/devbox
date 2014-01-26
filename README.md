@@ -59,6 +59,11 @@ For all the features and documentation, check their site: `http://ngrok.com` and
 * Restart nginx by doing `sudo /etc/init.d/nginx restart`
 * Start ngrok service with: `ngrok :80`
 
+## Postgresql
+
+Postgresql service is not running automatically on boot by default. You can run it manually by doing `sudo /etc/init.d/postgresql start`.
+You can disable mysql service if it's not in use, to save up some server resources.
+
 ## Troubleshoot
 
 * If you use Windows as host OS, disable NFS since it's not supported: edit `Vagrantfile` and set `nfs => false`. On OSX NFS gives much better shared folders performance.
