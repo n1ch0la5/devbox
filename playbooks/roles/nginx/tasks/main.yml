@@ -25,15 +25,16 @@
   copy: src=sites/{{ item }} dest=/etc/nginx/sites-available/{{ item }}
         owner=root group=root mode=0644
   with_items:
-    - defautl
+    - default
     - laravel.dev
     - laravel.dev.ssl
 
 - name: enable vhosts
-  file: path=/etc/nginx/sites-enabled/{{ item }} state=link
-        owner=root group=root
+  file: path=/etc/nginx/sites-enabled/{{ item }} 
+        src=/etc/nginx/sites-available/{{ item }}
+        state=link owner=root group=root
   with_items:
-    - defautl
+    - default
     - laravel.dev
     - laravel.dev.ssl
 

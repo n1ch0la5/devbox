@@ -1,5 +1,4 @@
 ---
 
 - name: install redis-server
-  with_items:
   apt: pkg=redis-server state=latest

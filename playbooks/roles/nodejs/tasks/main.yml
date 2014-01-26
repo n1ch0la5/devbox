@@ -1,7 +1,12 @@
 ---
 
-- name: add nodejs ppa
+- name: add nodejs ppa for Ubuntu
   command: /usr/bin/add-apt-repository ppa:chris-lea/node.js
+  when: ansible_distribution == 'Ubuntu'
 
-- name: install nodejs from ppa
+- name: enable wheezy backports for Debian
+  apt_repository: repo='deb http://ftp.debian.org/debian wheezy-backports main'
+  when: ansible_distribution == 'Debian'
+
+- name: install nodejs 
   apt: pkg=nodejs update_cache=yes

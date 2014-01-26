@@ -4,14 +4,13 @@
   apt: pkg={{ item }} state=latest
   with_items: 
     - sphinxsearch
-    - sphinxbase-utils
+    #- sphinxbase-utils
 
 - name: copy sphinx.conf to vm
   copy: src=sphinx.conf dest=/etc/sphinxsearch/sphinx.conf
         owner=root group=root mode=0644
 
 - name: create dirs for sphinx
-  command: 
   file: path=/var/db/sphinxsearch/data/myl state=directory
         owner=root group=root mode=0755
     

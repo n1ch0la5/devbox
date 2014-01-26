@@ -1,7 +1,7 @@
 ---
 
-- name: update apt cache and dist-upgrade
-  apt: update_cache=yes upgrade=dist
+- name: update apt cache
+  apt: update_cache=yes 
 
 - name: install some tools
   apt: pkg={{ item }} state=latest

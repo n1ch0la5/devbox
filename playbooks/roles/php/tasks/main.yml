@@ -1,7 +1,19 @@
 ---
 
-- name: add php5 repo
-  shell: /usr/bin/add-apt-repository ppa:ondrej/php5 && /usr/bin/add-apt-repository ppa:ondrej/systemd
+- name: add php5 repo for ubuntu
+  shell: LC_ALL=C.UTF-8 /usr/bin/add-apt-repository -y {{ item }}
+  with_items:
+    - 'ppa:ondrej/php5' 
+    - 'ppa:ondrej/systemd'
+  when: ansible_distribution == 'Ubuntu'
+
+- name: add php5.5 key from dotdeb for debian
+  shell: curl -O http://www.dotdeb.org/dotdeb.gpg && apt-key add dotdeb.gpg
+  when: ansible_distribution == 'Debian'
+
+- name: add php5.5 source from dotdeb for debian
+  shell: echo 'deb http://packages.dotdeb.org wheezy-php55 all' > /etc/apt/sources.list.d/php55.list && chmod 0644 /etc/apt/sources.list.d/php55.list
+  when: ansible_distribution == 'Debian'
 
 - name: apt-get update
   command: apt-get update
@@ -18,7 +30,7 @@
     - php5-curl
     - php5-fpm
     - libssh2-1-dev
-    - php-apc
+    - php5-apcu
     - php-pear
     - php5-gd
     - php5-imagick
