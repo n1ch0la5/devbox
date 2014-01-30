@@ -1,0 +1,2 @@
+[docker]
+laravel     ansible_ssh_host=192.168.47.105 ansible_ssh_port=22000 ansible_ssh_user=root ansible_ssh_pass=docker123

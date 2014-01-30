@@ -1,18 +1,18 @@
 ---
 
 - name: deploy everything to vm
-  hosts: lemp 
+  hosts: laravel 
 
   roles:
-    - common
-    - avahi-daemon
-    - MySQL
-    - php
+    #- common
+    #- avahi#-daemon
+    #- MySQL
+    #- php
     - nginx
-    - supervisor
-    - sphinx
-    - redis
-    - nodejs
-    - composer
-    - beanstalkd
+    #- supervisor
+    #- sphinx
+    #- redis
+    #- nodejs
+    #- composer
+    #- beanstalkd
 

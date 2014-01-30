@@ -3,8 +3,7 @@
 - name: install nginx packages
   apt: pkg={{ item }} state=latest
   with_items:
-    - nginx
-    - nginx-extras
+    - nginx-full
 
 - name: copy nginx.conf to remote
   copy: src=nginx.conf dest=/etc/nginx/nginx.conf
@@ -38,9 +37,16 @@
     - laravel.dev
     - laravel.dev.ssl
 
-- name: ensure /var/www exists
-  file: path=/var/www state=directory
+- name: ensure /var/www and website dirs exist
+  file: path={{ item }} state=directory
         owner=www-data group=www-data mode=0755
+  with_items:
+    - /var/www
+    - /var/www/laravel.dev/public
+
+- name: ln -s /var/www/laravel.dev /var/www/laravel.dev.ssl
+  file: src=/var/www/laravel.dev dest=/var/www/laravel.dev.ssl
+        state=link owner=www-data group=www-data
   notify:
     - start nginx
 

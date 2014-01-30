@@ -4,3 +4,17 @@ php.ini and browscap.ini
 
 sphinxbase-utils is in debian testing, will fix later.
 
+
+1. add the following line to /etc/hosts:
+eth0_ip laravel.dev laravel.dev.ssl
+
+2. docker run -i -t -p 22000:22 -p 8000:80 -p 44300:443 hyao/laravel-wip /bin/bash
+
+start mysql,php5-fpm,nginx
+
+3. browse:
+laravel.dev:8000 
+https://laravel.dev.ssl:44300
+
+
+
