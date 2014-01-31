@@ -16,5 +16,9 @@ start mysql,php5-fpm,nginx
 laravel.dev:8000 
 https://laravel.dev.ssl:44300
 
+https://index.docker.io/u/ishakuta/docker-nginx-php5/
+echo "daemon off;" >> /etc/nginx/nginx.conf
+
+laravel-wip is the base to build docker images for laravel
 
 
