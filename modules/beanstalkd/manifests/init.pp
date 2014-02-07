@@ -1,7 +1,18 @@
 class beanstalkd {
 
+    exec { 'add_beanstalkd_repo':
+        command => '/usr/bin/add-apt-repository ppa:ivanj/beanstalkd'
+    }
+
+    exec { 'update_beanstalkd_repo':
+        command => '/usr/bin/apt-get update',
+        require => Exec['add_beanstalkd_repo']
+    }
+
+
     package { 'beanstalkd':
         ensure => latest,
+        require => Exec['update_beanstalkd_repo']
     }
 
     service { 'beanstalkd':
