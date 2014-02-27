@@ -23,7 +23,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: "mkdir -p /host/nginx_logs"
   config.vm.provision "shell", inline: "mkdir -p /var/www"
   config.vm.provision "shell", inline: "chown -R www-data: /var/www"
-
+  
+  config.vm.provision :shell, :inline => "sed -i 's/cn.archive/us.archive/g' /etc/apt/sources.list"
   config.vm.provision "shell", inline: "apt-get update"
   config.vm.provision "shell", inline: "apt-get -y install git"
 
