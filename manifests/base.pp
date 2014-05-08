@@ -17,8 +17,8 @@ class { "apt_get::update":
 class { 'tools':
     stage => second,
 }
- 
-class {'php':
+
+class { 'php':
     stage => third,
 }
 
@@ -38,4 +38,3 @@ include nodejs
 include composer
 include beanstalkd
 include ngrok
-include postgresql

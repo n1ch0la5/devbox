@@ -12,12 +12,10 @@ Vagrant::configure("2") do |config|
       ]
     end
 
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box = "ubuntu/trusty64"
   config.vm.hostname = "devbox"
-  config.vm.synced_folder "www", "/var/www", :nfs => { 
-    :mount_options   => ['dmode=777,fmode=777'] 
-  }
+  config.vm.network :forwarded_port, host: 8080, guest: 80
+  config.vm.synced_folder "www", "/var/www", type: "nfs"
 
   # Set the Timezone to something useful
   config.vm.provision :shell, :inline => "echo \"Europe/Berlin\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
