@@ -2,6 +2,7 @@
 www/*
 # …instead of this file
 !www/README.md
+!www/index.html
 
 # Sublime Text 
 *.sublime*
